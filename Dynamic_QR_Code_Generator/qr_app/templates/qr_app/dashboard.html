@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h2>Welcome, {{ request.user.username }}</h2>
+
+{% comment %} <form method="get" action="{% url 'dashboard' %}">
+    <input type="text" name="q" placeholder="Search QR codes..." value="{{ query }}">
+    <button type="submit">Search</button>
+    {% if query %}
+        <a href="{% url 'dashboard' %}">Clear</a>
+    {% endif %}
+</form> {% endcomment %}
+
+<form method="get" action="{% url 'dashboard' %}" class="search-form">
+    <input type="text" name="q" placeholder="Search QR codes..." value="{{ query }}">
+    <button type="submit">Search</button>
+    {% if query %}
+        <a href="{% url 'dashboard' %}" style="align-self:center; margin-left:10px;">Clear</a>
+    {% endif %}
+</form>
+
+<br>
+
+<a href="{% url 'create_qr' %}">Create New QR</a>
+
+<h3>Your QR Codes:</h3>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Short ID</th>
+        <th>Redirect URL</th>
+        <th>QR Image</th>
+        <th>Total Scans</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for qr in qr_data %}
+    <tr>
+        <td>{{ qr.short_id }}</td>
+        <td>{{ qr.redirect_url }}</td>
+        <td>
+            {% if qr.qr_image_url %}
+                <img src="{{ qr.qr_image_url }}" width="100">
+            {% endif %}
+        </td>
+        <td>{{ qr.total_scans }}</td>
+
+        <td>
+            <a href="{% url 'update_qr' qr.short_id %}">Update</a> |
+            {% if qr.qr_image_url %}
+                <a href="{{ qr.qr_image_url }}" download>Download</a>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}

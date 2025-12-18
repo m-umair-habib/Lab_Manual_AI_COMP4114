@@ -1,0 +1,12 @@
+[project]
+name = "dynamic-qr-code-generator"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "django>=5.2.9",
+    "djangorestframework>=3.16.1",
+    "pillow>=12.0.0",
+    "qrcode>=8.2",
+]

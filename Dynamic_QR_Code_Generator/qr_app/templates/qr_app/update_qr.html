@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Update QR{% endblock %}
+
+{% block content %}
+<h2>Update QR Code</h2>
+<p>QR Code: {{ qr.short_id }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update URL</button>
+</form>
+{% endblock %}
