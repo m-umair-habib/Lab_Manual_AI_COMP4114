@@ -31,8 +31,8 @@ SECRET_KEY = 'django-insecure-m2z=bmzo0p$%15@35+4056kcfxf8f3)n&*gwuxca7zc@7%b(3!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['muhammadumairhabib.pythonanywhere.com']
 
 # Application definition
 
@@ -136,4 +136,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'dashboard'  # where user goes after login
 LOGOUT_REDIRECT_URL = 'login'     # where user goes after logout
+
 
